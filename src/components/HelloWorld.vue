@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="container is-fluid">
     <h1>{{ msg }}</h1>
     <p>
       For guide and recipes on how to configure / customize this project,<br>
@@ -27,6 +27,36 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+     <b-field label="Name">
+         <b-input v-model="name"></b-input>
+     </b-field>
+
+     <b-field label="Email"
+              type="is-danger"
+              message="This email is invalid">
+         <b-input type="email"
+                  value="john@"
+                  maxlength="30">
+         </b-input>
+     </b-field>
+
+     <b-field label="Username"
+              type="is-success"
+              message="This username is available">
+         <b-input value="johnsilver" maxlength="30"></b-input>
+     </b-field>
+
+     <b-field label="Password">
+         <b-input type="password"
+                  value="iwantmytreasure"
+                  password-reveal>
+         </b-input>
+     </b-field>
+
+     <b-field label="Message">
+         <b-input maxlength="200" type="textarea"></b-input>
+     </b-field>
+
   </div>
 </template>
 
@@ -41,18 +71,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
