@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <section>
+            <form action="">
         <b-field label="Nome completo">
             <b-input v-model="name"></b-input>
         </b-field>
@@ -53,8 +52,7 @@
             </b-input>
         </b-field>
         <a class="button">Salvar</a>
-    </section>
-  </div>
+  </form>
 </template>
 
 <script>

@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import { usuarioGetter } from './store/usuario/getters';
 
 import HelloWorld from './components/HelloWorld';
-import Login from './components/Login';
+import Login from './components/TheLogin';
 import Cadastro from './components/Cadastro';
 import Eventos from './components/Eventos';
 import Inscricao from './components/Inscricao';
@@ -32,6 +33,14 @@ const routes = [
         path: '/usuario',
         name: 'HelloWorld',
         component: HelloWorld,
+        meta: {
+            title: 'Principal',
+        },
+    },
+    {
+        path: '/',
+        name: 'Login',
+        component: Login,
         meta: {
             title: 'Principal',
         },
@@ -70,4 +79,25 @@ const routes = [
     },
 ];
 
-export default new Router({ routes });
+// export default new Router({ routes });
+const router = new Router({ routes });
+
+router.beforeEach(function(to, from, next) {
+    const usuario = (router.app.$store.state.usuario.usuario)
+
+    if (
+        (
+            to.name == 'Eventos' ||
+            to.name == 'Inscricao' ||
+            to.name == 'Eventos'
+        )
+        && Object.keys(usuario).length == 0
+    ) {
+        next('/login')
+    } else {
+        next()
+    }
+
+});
+
+export default router;

@@ -1,6 +1,6 @@
 <template>
+<section>
   <div class="container">
-    <section>
         <b-field label="Nome completo">
             <b-input v-model="name"></b-input>
         </b-field>
@@ -79,19 +79,22 @@
             </div>
         </div>
         <a class="button">Salvar</a>
-    </section>
   </div>
+</section>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'CadastroEventoForm',
   props: {
     msg: String
-  }
+  },
+    data(){
+        return {
+            name: ''
+        }
+    }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>

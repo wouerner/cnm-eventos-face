@@ -1,10 +1,14 @@
 import * as types from './types';
 
 export const state = {
-    consolidacaoComprovantes: {},
+    usuario: {},
 };
 
 export const mutations = {
-    [types.MOCK_AVALIACAO_RESULTADOS]() {
+    [types.SET_USUARIO](state, params) {
+        state.usuario = params
+    },
+    [types.REMOVE_USUARIO](state) {
+        state.usuario = {}
     },
 };
