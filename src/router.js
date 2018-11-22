@@ -1,11 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { usuarioGetter } from './store/usuario/getters';
 
 import HelloWorld from './components/HelloWorld';
 import Login from './components/TheLogin';
 import Cadastro from './components/Cadastro';
-import Eventos from './components/Eventos';
 import Inscricao from './components/Inscricao';
 import Passagem from './components/Passagem';
 import NotFound from './components/NotFound';
@@ -16,7 +14,7 @@ const routes = [
     {
         path: '/eventos',
         name: 'Eventos',
-        component: Eventos,
+        component: () => import(/* webpackChunkName: "theeventos" */ './components/TheEventos'),
         meta: {
             title: 'Principal',
         },
