@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import HelloWorld from './components/HelloWorld';
-import Login from './components/TheLogin';
-import Cadastro from './components/Cadastro';
-import Inscricao from './components/Inscricao';
+// import HelloWorld from './components/HelloWorld';
+// import Cadastro from './components/Cadastro';
+// import Inscricao from './components/Inscricao';
 import Passagem from './components/Passagem';
 import NotFound from './components/NotFound';
 
@@ -14,31 +13,55 @@ const routes = [
     {
         path: '/eventos',
         name: 'Eventos',
-        component: () => import(/* webpackChunkName: "theeventos" */ './components/TheEventos'),
+        component: () => import(/* webpackChunkName: "theeventos" */ './evento/TheEventos'),
         meta: {
             title: 'Principal',
         },
     },
     {
-        path: '/inscricao',
-        name: 'Inscricao',
-        component: Inscricao,
+        path: '/gerenciar/evento/:id',
+        name: 'TheGerenciarEvento',
+        component: () => import(/* webpackChunkName: "theeventos" */ './evento/TheGerenciarEvento'),
         meta: {
-            title: 'Principal',
+            title: 'Gerenciar Eventos',
         },
     },
     {
-        path: '/usuario',
-        name: 'HelloWorld',
-        component: HelloWorld,
+        path: '/gerenciar/evento/:id/inscritos',
+        name: 'TheInscritos',
+        component: () => import(/* webpackChunkName: "theinscritos" */ './inscricao/TheInscritos'),
         meta: {
-            title: 'Principal',
+            title: 'Gerenciar Eventos',
         },
     },
+    {
+        path: '/gerenciar/usuarios',
+        name: 'TheUsuarios',
+        component: () => import(/* webpackChunkName: "theusuarios" */ './usuario/TheUsuarios'),
+        meta: {
+            title: 'Gerenciar Usuarios',
+        },
+    },
+    // {
+    //     path: '/inscricao',
+    //     name: 'Inscricao',
+    //     component: Inscricao,
+    //     meta: {
+    //         title: 'Principal',
+    //     },
+    // },
+    // {
+    //     path: '/usuario',
+    //     name: 'HelloWorld',
+    //     component: HelloWorld,
+    //     meta: {
+    //         title: 'Principal',
+    //     },
+    // },
     {
         path: '/',
         name: 'Login',
-        component: Login,
+        component: () => import(/* webpackChunkName: "thelogin" */ './usuario/TheLogin'),
         meta: {
             title: 'Principal',
         },
@@ -46,19 +69,19 @@ const routes = [
     {
         path: '/login',
         name: 'Login',
-        component: Login,
+        component: () => import(/* webpackChunkName: "thelogin" */ './usuario/TheLogin'),
         meta: {
-            title: 'Principal',
+            title: 'Login',
         },
     },
-    {
-        path: '/cadastro',
-        name: 'Cadastro',
-        component: Cadastro,
-        meta: {
-            title: 'Principal',
-        },
-    },
+    // {
+    //     path: '/cadastro',
+    //     name: 'Cadastro',
+    //     component: Cadastro,
+    //     meta: {
+    //         title: 'Principal',
+    //     },
+    // },
     {
         path: '/passagem',
         name: 'Passagem',

@@ -35,11 +35,13 @@
                         <a
                             href="#"
                             class="card-footer-item"
-                            @click="isModalEventoActive = true">
+                            @click="inscrever(index)"
+                        >
                             Inscrição
                         </a>
                         <a href="https://www.cnm.org.br/index.php/informe/exibe/mobilizacao-avancos-da-pauta-municipalista" class="card-footer-item">Saiba mais</a>
-                        <a href="/gerenciar" class="card-footer-item">Gerenciar</a>
+                        <router-link  class="card-footer-item" :to="'/gerenciar/evento/' + index">Gerenciar</router-link>
+                        <router-link  class="card-footer-item" :to="'/gerenciar/evento/' + index + '/inscritos'">Inscritos</router-link>
                         <a href="#" class="card-footer-item" @click="duplicar(index)">Duplicar</a>
                     </footer>
                      </div>
@@ -52,7 +54,10 @@
             </header>
             <div class="modal-card" style="width: auto">
                 <section class="modal-card-body">
-                    <Inscricao />
+                    <Inscricao
+                        :evento="inscricao"
+                        :usuario="usuario"
+                    />
                 </section>
             </div>
         </b-modal>
@@ -71,18 +76,19 @@
 </template>
 
 <script>
-import Inscricao from './Inscricao'
-import EventosCadastro from './eventos/CadastroForm'
+import Inscricao from '../inscricao/Inscricao'
+import EventosCadastro from './components/CadastroForm'
 import {mapActions, mapGetters} from 'vuex'
 
 export default {
-  name: 'Login',
+  name: 'TheEventos',
   components:{ Inscricao, EventosCadastro},
   data() {
       return {
           isModalEventoActive: false,
           isEventoCadastroActive: false,
-          data: {}
+          data: {},
+          inscricao: {}
       }
   },
   props: {
@@ -93,7 +99,9 @@ export default {
   },
   computed:{
       ...mapGetters({
-          eventosGetter: 'eventos/eventosGetter'
+          eventosGetter: 'eventos/eventosGetter',
+          eventoGetter: 'eventos/eventoGetter',
+          usuario: 'usuario/usuarioGetter'
       }),
   },
   methods:{
@@ -107,6 +115,11 @@ export default {
       duplicar(id){
           this.isEventoCadastroActive = true
           this.data = this.eventosGetter[id]
+      },
+      inscrever(id){
+          this.isModalEventoActive = true
+      //    this.isEventoCadastroActive = true
+          this.inscricao = this.eventoGetter(id)
       }
   }
 }

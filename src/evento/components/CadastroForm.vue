@@ -17,7 +17,7 @@
         <label class="label">Descrição</label>
         <textarea v-model="descricao" class="textarea" placeholder="Descrição"></textarea>
 
-        <a class="button" @click="salvar()">Salvar</a>
+        <a class="button is-primary" @click="salvar()">Salvar</a>
 </form>
 </template>
 
